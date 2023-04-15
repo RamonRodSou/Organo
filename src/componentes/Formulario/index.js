@@ -7,7 +7,7 @@ import './css'
 
 
 
-const Formulario = () => {
+const Formulario = (props) => {
 
     const [nome, SetNome] = useState ('')
     const [cargo, SetCargo] = useState ('')
@@ -17,7 +17,6 @@ const Formulario = () => {
 
     
     const times = [
-        '',
         'Programação',
         'Front-End',
         'Data Science',
@@ -30,6 +29,21 @@ const Formulario = () => {
     const aoSalvar = (evento) => { 
         evento.preventDefault()
         console.log('Form foi submetido', nome, cargo,imagem, time)
+
+        props.aoColaboradorCadastrado ({
+
+            nome: nome,
+            cargo: cargo,
+            imagem: imagem,
+            time: time
+
+    // OU assim é a msm coisa
+            // nome,
+            // cargo,
+            // imagem,
+            // time
+        })
+
     }
     
 
