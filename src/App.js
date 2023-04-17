@@ -60,10 +60,8 @@ function App() {
         nome={time.nome} 
         corPrimaria={time.corPrimaria} 
         corSecundaria={time.corSecundaria} 
-        debugger
         colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
-        
-      />)}       debugger
+      />)}   
 
     </div>
   );

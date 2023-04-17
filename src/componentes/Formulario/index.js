@@ -14,27 +14,15 @@ const Formulario = (props) => {
     const [imagem, setImagem] = useState ('')
     const [time, setTime] = useState ('')
 
-    // const times = [
-    //     'Programação',
-    //     'Front-End',
-    //     'Data Science',
-    //     'Devops',
-    //     'Ux e Design',
-    //     'Mobile',
-    //     'Inovação e Gestão'
-    // ]
-
     const aoSalvar = (evento) => { 
         evento.preventDefault()
-        console.log('Form foi submetido', nome, cargo,imagem, time)
-
         props.aoColaboradorCadastrado ({
 
             nome: nome,
             cargo: cargo,
             imagem: imagem,
             time: time
-
+            
     // OU assim é a msm coisa
             // nome,
             // cargo,
