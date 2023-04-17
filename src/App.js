@@ -1,6 +1,5 @@
-
 import { useState } from 'react';
-import Banner from './componentes/Banner/';
+import Banner from './componentes/Banner';
 import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
 
@@ -8,58 +7,65 @@ function App() {
 
   const times = [
     {
-      nome:'Programação' ,
+      nome: 'Programação',
       corPrimaria: '#D9F7E9',
-      corSegundaria: '#57C278'
+      corSecundaria: '#57C278'
     },
     {
-      nome:'Front-End',
+      nome: 'Front-End',
       corPrimaria: '#E8F8FF',
-      corSegundaria: '#82CFFA'
+      corSecundaria: '#82CFFA'
     },
     {
-      nome:'Data Science',
+      nome: 'Data Science',
       corPrimaria: '#F0F8E2',
-      corSegundaria: '#A6D157'
+      corSecundaria: '#A6D157'
     },
     {
-      nome:'Devops',
+      nome: 'Devops',
       corPrimaria: '#FDE7E8',
-      corSegundaria: '#E06B69'
+      corSecundaria: '#E06B69'
     },
     {
-      nome:'Ux e Design',
+      nome: 'UX e Design',
       corPrimaria: '#FAE9F5',
-      corSegundaria: '#DB6EBF'
+      corSecundaria: '#DB6EBF'
     },
     {
-      nome:'Mobile',
+      nome: 'Mobile',
       corPrimaria: '#FFF5D9',
-      corSegundaria: '#FFBA05'
+      corSecundaria: '#FFBA05'
     },
     {
-      nome:'Inovação e Gestão',
+      nome: 'Inovação e Gestão',
       corPrimaria: '#FFEEDF',
-      corSegundaria: '#FF8A29'
+      corSecundaria: '#FF8A29'
     }
   ]
 
-  const [colaboradores, setColaborador] = useState ([])
+  const [colaboradores, setColaboradores] = useState([])
+
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    console.log(colaborador)
-    setColaborador(...colaboradores, colaborador)
+
+    setColaboradores([...colaboradores, colaborador])
   }
 
   return (
     <div className="App">
-      <Banner/>
-      <Formulario aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
-      {times.map(time => <Time key={time.nome} nome={time.nome} corPrimaria={time.corPrimaria} corSegundaria={time.corSegundaria}/> )}
+      <Banner />
+      <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
 
-
+      {times.map(time => <Time 
+        key={time.nome} 
+        nome={time.nome} 
+        corPrimaria={time.corPrimaria} 
+        corSecundaria={time.corSecundaria} 
+        debugger
+        colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+        
+      />)}       debugger
 
     </div>
-
   );
 }
 
